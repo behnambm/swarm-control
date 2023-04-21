@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  control:
+    image: behnambm/swarm-control:latest
+    ports:
+      - 8080:8090
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - 8878:80
+    deploy:
+      resources:
+        limits:
+          memory: 30M
